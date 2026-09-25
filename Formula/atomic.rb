@@ -18,6 +18,11 @@ class Atomic < Formula
   homepage "https://github.com/atomicdotdev/atomic"
   license any_of: ["MIT", "Apache-2.0"]
 
+  livecheck do
+    url :stable
+    strategy :github_latest
+  end
+
   on_macos do
     if Hardware::CPU.arm?
       url "https://github.com/atomicdotdev/atomic/releases/download/v0.18.3/atomic-aarch64-apple-darwin.tar.gz"
@@ -40,11 +45,6 @@ class Atomic < Formula
 
   def install
     bin.install "atomic"
-  end
-
-  livecheck do
-    url :stable
-    strategy :github_latest
   end
 
   test do
