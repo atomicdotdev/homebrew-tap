@@ -1,0 +1,48 @@
+name: Update formula
+
+# Keeps Formula/atomic.rb pointed at the latest atomic release so nobody has to
+# bump it by hand. The upstream release is public, so no secrets are required;
+# this workflow's own GITHUB_TOKEN is enough to commit back to the tap.
+on:
+  schedule:
+    # 06:17 UTC daily — off the hour so it doesn't pile onto GitHub's busiest minute.
+    - cron: "17 6 * * *"
+  workflow_dispatch:
+  repository_dispatch:
+    types: [atomic-release]
+
+permissions:
+  contents: write
+
+concurrency:
+  group: update-formula
+  cancel-in-progress: false
+
+jobs:
+  update:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Update formula to the latest release
+        id: update
+        run: |
+          if ruby scripts/update_formula.rb; then
+            if git diff --quiet -- Formula/atomic.rb; then
+              echo "changed=false" >> "$GITHUB_OUTPUT"
+            else
+              echo "changed=true" >> "$GITHUB_OUTPUT"
+            fi
+          else
+            echo "::error::formula update failed"
+            exit 1
+          fi
+
+      - name: Commit and push
+        if: steps.update.outputs.changed == 'true'
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          version=$(grep -oE 'releases/download/v[0-9.]+' Formula/atomic.rb | head -1 | sed 's|.*/v||')
+          git commit -am "chore: update atomic to v${version}"
+          git push

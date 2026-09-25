@@ -52,6 +52,24 @@ curl -sSf https://atomic.storage/install.sh | sh
 
 See the [Atomic installation docs](https://docs.atomic.dev/getting-started/installation) for all options.
 
+## How updates work
+
+`Formula/atomic.rb` is kept at the latest release automatically: the
+[Update formula](.github/workflows/update-formula.yml) workflow runs daily,
+reads the newest [atomic release](https://github.com/atomicdotdev/atomic/releases/latest)
+and its `checksums-sha256.txt`, and commits the new version and hashes when
+they differ. No secrets are involved — the release is public and the workflow
+commits with its own token.
+
+To run it by hand, or after a release lands:
+
+```bash
+brew tap atomicdotdev/tap
+brew upgrade atomicdotdev/tap/atomic
+```
+
+or trigger the workflow directly from the Actions tab.
+
 ## Reporting issues
 
 For issues with the **Atomic CLI itself**, open an issue at [atomicdotdev/atomic](https://github.com/atomicdotdev/atomic/issues).
