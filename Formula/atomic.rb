@@ -25,21 +25,21 @@ class Atomic < Formula
 
   on_macos do
     if Hardware::CPU.arm?
-      url "https://github.com/atomicdotdev/atomic/releases/download/v0.19.1/atomic-aarch64-apple-darwin.tar.gz"
-      sha256 "710f07da967ff8c536022db739380dd7e111a021757d2f47e43e4d127a1587d1"
+      url "https://github.com/atomicdotdev/atomic/releases/download/v0.20.0/atomic-aarch64-apple-darwin.tar.gz"
+      sha256 "25331d667b718b8f5f557113107df0a39c8ecb89bde183b65fac803887f72b77"
     else
-      url "https://github.com/atomicdotdev/atomic/releases/download/v0.19.1/atomic-x86_64-apple-darwin.tar.gz"
-      sha256 "37e6741cfb2b79fb055d50180ac334e6130b1ced4cdb682ea366aad564f5bcb4"
+      url "https://github.com/atomicdotdev/atomic/releases/download/v0.20.0/atomic-x86_64-apple-darwin.tar.gz"
+      sha256 "56450f0acf9618098167170dec05d431f0b5edd990719b9f88cc538f12ff476a"
     end
   end
 
   on_linux do
     if Hardware::CPU.arm?
-      url "https://github.com/atomicdotdev/atomic/releases/download/v0.19.1/atomic-aarch64-unknown-linux-gnu.tar.gz"
-      sha256 "f229fafea25264b6c0afd5a74f41196cd7d6042a6e8a39b9cb7905b05a5bf838"
+      url "https://github.com/atomicdotdev/atomic/releases/download/v0.20.0/atomic-aarch64-unknown-linux-gnu.tar.gz"
+      sha256 "25b7acd00214b5697971b139bb8a9fcb7373b02c793ade3c0444a0bc2d19fda6"
     else
-      url "https://github.com/atomicdotdev/atomic/releases/download/v0.19.1/atomic-x86_64-unknown-linux-gnu.tar.gz"
-      sha256 "e7e21e9a6e5565abbd26a43533a845f2561cb33122bf7c358d788d633e582f60"
+      url "https://github.com/atomicdotdev/atomic/releases/download/v0.20.0/atomic-x86_64-unknown-linux-gnu.tar.gz"
+      sha256 "076995dd70c8e06dd3056e2919ff561443b8fd73fadcb987b69e258da71eebf0"
     end
   end
 
