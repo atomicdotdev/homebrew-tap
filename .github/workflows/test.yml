@@ -1,0 +1,36 @@
+name: Test tap
+
+on:
+  push:
+  pull_request:
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+jobs:
+  updater:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: ruby/setup-ruby@v1
+        with:
+          ruby-version: "3.3"
+      - run: gem install minitest --no-document
+      - run: ruby scripts/update_formula_test.rb
+
+  formula:
+    strategy:
+      fail-fast: false
+      matrix:
+        os: [macos-latest, ubuntu-latest]
+    runs-on: ${{ matrix.os }}
+    steps:
+      - uses: actions/checkout@v4
+      - uses: Homebrew/actions/setup-homebrew@master
+      - name: Tap checked-out formula
+        run: brew tap --custom-remote atomicdotdev/tap "$GITHUB_WORKSPACE"
+      - name: Install complete release runtime
+        run: brew install --build-from-source --include-test atomicdotdev/tap/atomic
+      - name: Load installed runtime through Node-API
+        run: brew test atomicdotdev/tap/atomic
