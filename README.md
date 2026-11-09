@@ -106,8 +106,10 @@ that revision for same-version updates and removes it when moving to a new
 upstream version.
 
 The [Test tap](.github/workflows/test.yml) workflow runs updater regressions and
-installs/tests the formula on macOS and Linux. To run the updater regressions
-locally with Minitest installed:
+installs/tests the formula on macOS and Linux, using
+`Homebrew/actions/setup-homebrew@main` to prepare the test environment.
+
+To run the updater regressions locally with Minitest installed:
 
 ```bash
 ruby scripts/update_formula_test.rb
