@@ -27,7 +27,7 @@ jobs:
     runs-on: ${{ matrix.os }}
     steps:
       - uses: actions/checkout@v4
-      - uses: Homebrew/actions/setup-homebrew@master
+      - uses: Homebrew/actions/setup-homebrew@main
       - name: Tap checked-out formula
         run: brew tap --custom-remote atomicdotdev/tap "$GITHUB_WORKSPACE"
       - name: Install complete release runtime
