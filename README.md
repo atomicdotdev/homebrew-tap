@@ -63,6 +63,10 @@ The installed runtime must match the protobuf contract expected by its consumer,
 including Atomic Sherpa. Installing a complete older runtime does not make it
 compatible with a newer consumer. A matching runtime release is still required.
 
+The current complete-runtime formula targets **Atomic v0.22.0**. It retains
+formula revision 1 so existing CLI-only v0.22.0 installations upgrade to the
+complete runtime layout.
+
 Ensure the Homebrew `atomic` is the active executable (`type -a atomic`). An
 explicit runtime override or a runtime registered by another installer takes
 precedence over PATH discovery. To select this installation explicitly on a
