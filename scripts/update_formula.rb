@@ -70,6 +70,11 @@ ASSETS.each do |asset|
   exit 1
 end
 
+# A new upstream version starts at revision zero; same-version updates retain
+# the tap's revision so an installation-layout fix still triggers upgrades.
+current_version = original[%r{/releases/download/v([^/]+)/}, 1]
+formula = formula.sub(/^  revision \d+\n/, "") if current_version != version
+
 if formula == original
   puts "formula already at #{version}; nothing to do"
   exit 0
