@@ -20,7 +20,6 @@ class Atomic < Formula
   desc "Mathematically sound distributed version control system for the age of AI"
   homepage "https://github.com/atomicdotdev/atomic"
   license any_of: ["MIT", "Apache-2.0"]
-  revision 1
 
   livecheck do
     url :stable
@@ -31,21 +30,21 @@ class Atomic < Formula
 
   on_macos do
     if Hardware::CPU.arm?
-      url "https://github.com/atomicdotdev/atomic/releases/download/v0.22.0/atomic-aarch64-apple-darwin.tar.gz"
-      sha256 "5ef90e48318eb25ee7f144de4c313eaa7a90fd3587fec81aafa7ddb9431a827e"
+      url "https://github.com/atomicdotdev/atomic/releases/download/v0.22.1/atomic-aarch64-apple-darwin.tar.gz"
+      sha256 "feb019b50dbabc8787bd9331b997ef426a1ddd0721fc5e2d3380bdd3450b47fe"
     else
-      url "https://github.com/atomicdotdev/atomic/releases/download/v0.22.0/atomic-x86_64-apple-darwin.tar.gz"
-      sha256 "8c560d14590331cd36d7dde0a1e339ad33ee9f08df85c5e47134c28ee3b83c4b"
+      url "https://github.com/atomicdotdev/atomic/releases/download/v0.22.1/atomic-x86_64-apple-darwin.tar.gz"
+      sha256 "062cda7a1f24fa777fb57b24e1eed4f675790b37388107ea7c3cf2c57d3b9742"
     end
   end
 
   on_linux do
     if Hardware::CPU.arm?
-      url "https://github.com/atomicdotdev/atomic/releases/download/v0.22.0/atomic-aarch64-unknown-linux-gnu.tar.gz"
-      sha256 "947fd893f6b1b4ffb6f55e09fbc3235dbc5e671b1587508bae190bb5f6586385"
+      url "https://github.com/atomicdotdev/atomic/releases/download/v0.22.1/atomic-aarch64-unknown-linux-gnu.tar.gz"
+      sha256 "069febed158694abf647d4a657fb98ace414393f60bad10fec84b19714eaffe0"
     else
-      url "https://github.com/atomicdotdev/atomic/releases/download/v0.22.0/atomic-x86_64-unknown-linux-gnu.tar.gz"
-      sha256 "f08a03a712d97b69ff3d23dc11090d5ee149b9da87a3faa74d25de82167abfcc"
+      url "https://github.com/atomicdotdev/atomic/releases/download/v0.22.1/atomic-x86_64-unknown-linux-gnu.tar.gz"
+      sha256 "859230daeb4e6c6558c78d7b87d721bc0a1ccc38c2dba83f179518d6ca17e34f"
     end
   end
 
